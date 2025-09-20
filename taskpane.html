@@ -1,1 +1,29 @@
-fvcdvf
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Complément Office</title>
+  <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
+  <style>
+    body { font-family: sans-serif; padding: 20px; }
+    button { padding: 10px 20px; font-size: 16px; }
+  </style>
+</head>
+<body>
+  <h2>Bonjour Paul 👋</h2>
+  <p>Ceci est ton complément Office personnalisé.</p>
+  <button id="run">Insérer du texte</button>
+
+  <script>
+    Office.onReady(() => {
+      document.getElementById("run").onclick = () => {
+        Word.run(async (context) => {
+          context.document.body.insertText("Texte inséré par le complément 🎯", Word.InsertLocation.end);
+          await context.sync();
+        });
+      };
+    });
+  </script>
+</body>
+</html>
+
